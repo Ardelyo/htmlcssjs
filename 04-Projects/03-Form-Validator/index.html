@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .error {
+            color: #ff4444;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        input.invalid {
+            border-color: #ff4444;
+        }
+
+        input.valid {
+            border-color: #4CAF50;
+        }
+
+        .password-strength {
+            margin-top: 5px;
+            height: 5px;
+            background-color: #eee;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .strength-meter {
+            height: 100%;
+            width: 0;
+            transition: width 0.3s, background-color 0.3s;
+        }
+
+        .weak { width: 33%; background-color: #ff4444; }
+        .medium { width: 66%; background-color: #ffa700; }
+        .strong { width: 100%; background-color: #4CAF50; }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e8f5e9;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Form Validator</h1>
+        
+        <form id="validationForm" novalidate>
+            <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" id="name" placeholder="Masukkan nama">
+                <div class="error" id="nameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Masukkan email">
+                <div class="error" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Masukkan password">
+                <div class="password-strength">
+                    <div class="strength-meter" id="strengthMeter"></div>
+                </div>
+                <div class="error" id="passwordError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm">Konfirmasi Password</label>
+                <input type="password" id="confirm" placeholder="Konfirmasi password">
+                <div class="error" id="confirmError"></div>
+            </div>
+
+            <button type="submit" id="submitButton" disabled>Daftar</button>
+        </form>
+
+        <div class="success-message" id="successMessage">
+            Pendaftaran berhasil!
+        </div>
+    </div>
+
+    <script>
+        // Get form elements
+        const form = document.getElementById('validationForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmInput = document.getElementById('confirm');
+        const submitButton = document.getElementById('submitButton');
+        const successMessage = document.getElementById('successMessage');
+        const strengthMeter = document.getElementById('strengthMeter');
+
+        // Error elements
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const confirmError = document.getElementById('confirmError');
+
+        // Validation patterns
+        const patterns = {
+            name: /^[a-zA-Z\s]{3,}$/,
+            email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+        };
+
+        // Validation messages
+        const messages = {
+            name: {
+                invalid: 'Nama harus minimal 3 karakter dan hanya huruf',
+                empty: 'Nama tidak boleh kosong'
+            },
+            email: {
+                invalid: 'Email tidak valid',
+                empty: 'Email tidak boleh kosong'
+            },
+            password: {
+                invalid: 'Password harus minimal 8 karakter, dengan huruf dan angka',
+                empty: 'Password tidak boleh kosong'
+            },
+            confirm: {
+                notMatch: 'Password tidak cocok',
+                empty: 'Konfirmasi password tidak boleh kosong'
+            }
+        };
+
+        // Check password strength
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (password.match(/[a-zA-Z]/)) strength++;
+            if (password.match(/[0-9]/)) strength++;
+            if (password.match(/[^a-zA-Z0-9]/)) strength++;
+
+            strengthMeter.className = 'strength-meter';
+            if (strength === 0) {
+                strengthMeter.classList.add('');
+            } else if (strength <= 2) {
+                strengthMeter.classList.add('weak');
+            } else if (strength === 3) {
+                strengthMeter.classList.add('medium');
+            } else {
+                strengthMeter.classList.add('strong');
+            }
+        }
+
+        // Validate single field
+        function validateField(input, pattern, errorElement, messages) {
+            const value = input.value.trim();
+            let isValid = true;
+            
+            if (!value) {
+                showError(errorElement, messages.empty);
+                isValid = false;
+            } else if (pattern && !pattern.test(value)) {
+                showError(errorElement, messages.invalid);
+                isValid = false;
+            } else {
+                hideError(errorElement);
+            }
+
+            updateInputStyle(input, isValid);
+            return isValid;
+        }
+
+        // Show error message
+        function showError(element, message) {
+            element.textContent = message;
+            element.style.display = 'block';
+        }
+
+        // Hide error message
+        function hideError(element) {
+            element.style.display = 'none';
+        }
+
+        // Update input style based on validity
+        function updateInputStyle(input, isValid) {
+            input.classList.remove('valid', 'invalid');
+            input.classList.add(isValid ? 'valid' : 'invalid');
+        }
+
+        // Check form validity
+        function checkFormValidity() {
+            const isNameValid = validateField(nameInput, patterns.name, nameError, messages.name);
+            const isEmailValid = validateField(emailInput, patterns.email, emailError, messages.email);
+            const isPasswordValid = validateField(passwordInput, patterns.password, passwordError, messages.password);
+            
+            let isConfirmValid = true;
+            if (!confirmInput.value) {
+                showError(confirmError, messages.confirm.empty);
+                isConfirmValid = false;
+            } else if (confirmInput.value !== passwordInput.value) {
+                showError(confirmError, messages.confirm.notMatch);
+                isConfirmValid = false;
+            } else {
+                hideError(confirmError);
+            }
+            updateInputStyle(confirmInput, isConfirmValid);
+
+            submitButton.disabled = !(isNameValid && isEmailValid && isPasswordValid && isConfirmValid);
+        }
+
+        // Add input event listeners
+        [nameInput, emailInput, passwordInput, confirmInput].forEach(input => {
+            input.addEventListener('input', () => {
+                validateField(input, 
+                    patterns[input.id], 
+                    document.getElementById(`${input.id}Error`),
+                    messages[input.id]);
+                if (input.id === 'password') {
+                    checkPasswordStrength(input.value);
+                }
+                checkFormValidity();
+            });
+        });
+
+        // Form submit handler
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!submitButton.disabled) {
+                successMessage.style.display = 'block';
+                form.reset();
+                submitButton.disabled = true;
+                [nameInput, emailInput, passwordInput, confirmInput].forEach(input => {
+                    input.classList.remove('valid', 'invalid');
+                });
+                strengthMeter.className = 'strength-meter';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+    <style>
+        .demo-section {
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .highlight {
+            background-color: #e74c3c;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        #drawingCanvas {
+            border: 1px solid #000;
+            background-color: white;
+        }
+        #output {
+            font-family: monospace;
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event Handling</h1>
+
+    <!-- Mouse Events -->
+    <div class="demo-section">
+        <h2>1. Mouse Events</h2>
+        <div id="mouseBox" class="box"></div>
+        <div id="mouseOutput" class="output"></div>
+    </div>
+
+    <!-- Keyboard Events -->
+    <div class="demo-section">
+        <h2>2. Keyboard Events</h2>
+        <input type="text" id="keyboardInput" placeholder="Ketik di sini...">
+        <div id="keyboardOutput" class="output"></div>
+    </div>
+
+    <!-- Form Events -->
+    <div class="demo-section">
+        <h2>3. Form Events</h2>
+        <form id="demoForm">
+            <div class="form-group">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="formOutput" class="output"></div>
+    </div>
+
+    <!-- Event Bubbling -->
+    <div class="demo-section">
+        <h2>4. Event Bubbling</h2>
+        <div id="outer" style="padding: 20px; background: #f0f0f0;">
+            Outer
+            <div id="middle" style="padding: 20px; background: #e0e0e0;">
+                Middle
+                <div id="inner" style="padding: 20px; background: #d0d0d0;">
+                    Inner
+                </div>
+            </div>
+        </div>
+        <div id="bubblingOutput" class="output"></div>
+    </div>
+
+    <!-- Event Delegation -->
+    <div class="demo-section">
+        <h2>5. Event Delegation</h2>
+        <div id="buttonContainer">
+            <button class="delegated-button">Button 1</button>
+            <button class="delegated-button">Button 2</button>
+            <button class="delegated-button">Button 3</button>
+        </div>
+        <button onclick="addButton()">Tambah Button</button>
+        <div id="delegationOutput" class="output"></div>
+    </div>
+
+    <!-- Drawing Canvas (Advanced) -->
+    <div class="demo-section">
+        <h2>6. Drawing Canvas (Advanced)</h2>
+        <canvas id="drawingCanvas" width="400" height="200"></canvas>
+        <div>
+            <button onclick="clearCanvas()">Clear</button>
+            <input type="color" id="colorPicker" value="#000000">
+        </div>
+    </div>
+
+    <script>
+        // Mouse Events
+        const mouseBox = document.getElementById('mouseBox');
+        const mouseOutput = document.getElementById('mouseOutput');
+
+        mouseBox.addEventListener('mouseenter', () => {
+            mouseOutput.textContent = 'Mouse Enter';
+            mouseBox.classList.add('highlight');
+        });
+
+        mouseBox.addEventListener('mouseleave', () => {
+            mouseOutput.textContent = 'Mouse Leave';
+            mouseBox.classList.remove('highlight');
+        });
+
+        mouseBox.addEventListener('click', () => {
+            mouseOutput.textContent = 'Click!';
+        });
+
+        mouseBox.addEventListener('dblclick', () => {
+            mouseOutput.textContent = 'Double Click!';
+        });
+
+        // Keyboard Events
+        const keyboardInput = document.getElementById('keyboardInput');
+        const keyboardOutput = document.getElementById('keyboardOutput');
+
+        keyboardInput.addEventListener('keydown', (e) => {
+            keyboardOutput.textContent = `Key Down: ${e.key}`;
+        });
+
+        keyboardInput.addEventListener('keyup', (e) => {
+            keyboardOutput.textContent = `Key Up: ${e.key}`;
+        });
+
+        // Form Events
+        const demoForm = document.getElementById('demoForm');
+        const formOutput = document.getElementById('formOutput');
+
+        demoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(demoForm);
+            formOutput.textContent = `Form submitted with: ${formData.get('name')}, ${formData.get('email')}`;
+        });
+
+        const nameInput = document.getElementById('name');
+        nameInput.addEventListener('change', (e) => {
+            formOutput.textContent = `Name changed to: ${e.target.value}`;
+        });
+
+        // Event Bubbling
+        const outer = document.getElementById('outer');
+        const middle = document.getElementById('middle');
+        const inner = document.getElementById('inner');
+        const bubblingOutput = document.getElementById('bubblingOutput');
+
+        [outer, middle, inner].forEach(element => {
+            element.addEventListener('click', (e) => {
+                bubblingOutput.textContent = `Clicked on: ${e.currentTarget.id}`;
+                e.stopPropagation(); // Mencegah event bubbling
+            });
+        });
+
+        // Event Delegation
+        const buttonContainer = document.getElementById('buttonContainer');
+        const delegationOutput = document.getElementById('delegationOutput');
+
+        buttonContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('delegated-button')) {
+                delegationOutput.textContent = `Clicked: ${e.target.textContent}`;
+            }
+        });
+
+        function addButton() {
+            const newButton = document.createElement('button');
+            newButton.className = 'delegated-button';
+            newButton.textContent = `Button ${buttonContainer.children.length + 1}`;
+            buttonContainer.appendChild(newButton);
+        }
+
+        // Drawing Canvas
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+        const colorPicker = document.getElementById('colorPicker');
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        function draw(e) {
+            if (!isDrawing) return;
+            
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.strokeStyle = colorPicker.value;
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        });
+
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mouseout', () => isDrawing = false);
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
+</body>
+</html>

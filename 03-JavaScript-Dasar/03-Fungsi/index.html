@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fungsi dalam JavaScript</title>
+    <style>
+        .demo-section {
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .output {
+            font-family: monospace;
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .console {
+            font-family: monospace;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fungsi dalam JavaScript</h1>
+
+    <!-- Function Declaration -->
+    <div class="demo-section">
+        <h2>1. Deklarasi Fungsi</h2>
+        <div class="console" id="declaration-output"></div>
+        <button onclick="sayHello('Budi')">Panggil Fungsi</button>
+    </div>
+
+    <!-- Function Expression -->
+    <div class="demo-section">
+        <h2>2. Expression Fungsi</h2>
+        <div class="console" id="expression-output"></div>
+        <button onclick="hitungLuas(5, 3)">Hitung Luas</button>
+    </div>
+
+    <!-- Arrow Function -->
+    <div class="demo-section">
+        <h2>3. Arrow Function</h2>
+        <div class="console" id="arrow-output"></div>
+        <button onclick="testArrowFunction()">Test Arrow Function</button>
+    </div>
+
+    <!-- Parameters & Return -->
+    <div class="demo-section">
+        <h2>4. Parameter dan Return</h2>
+        <div class="console" id="params-output"></div>
+        <input type="number" id="nilai1" placeholder="Angka 1">
+        <input type="number" id="nilai2" placeholder="Angka 2">
+        <button onclick="kalkulasi()">Hitung</button>
+    </div>
+
+    <!-- Default Parameters -->
+    <div class="demo-section">
+        <h2>5. Parameter Default</h2>
+        <div class="console" id="default-output"></div>
+        <button onclick="sapa()">Sapa (Default)</button>
+        <button onclick="sapa('Ani')">Sapa (Custom)</button>
+    </div>
+
+    <!-- Callback Function -->
+    <div class="demo-section">
+        <h2>6. Callback Function</h2>
+        <div class="console" id="callback-output"></div>
+        <button onclick="prosesData()">Proses Data</button>
+    </div>
+
+    <script>
+        // Function Declaration
+        function sayHello(nama) {
+            const output = `Hello, ${nama}!`;
+            document.getElementById('declaration-output').innerText = output;
+            return output;
+        }
+
+        // Function Expression
+        const hitungLuas = function(panjang, lebar) {
+            const luas = panjang * lebar;
+            const output = `Luas: ${panjang} x ${lebar} = ${luas}`;
+            document.getElementById('expression-output').innerText = output;
+            return luas;
+        };
+
+        // Arrow Function
+        const tambah = (a, b) => a + b;
+        const kali = (a, b) => a * b;
+
+        function testArrowFunction() {
+            const hasil1 = tambah(5, 3);
+            const hasil2 = kali(4, 2);
+            const output = `
+Tambah: 5 + 3 = ${hasil1}
+Kali: 4 x 2 = ${hasil2}
+            `;
+            document.getElementById('arrow-output').innerText = output;
+        }
+
+        // Parameters & Return
+        function kalkulasi() {
+            const n1 = Number(document.getElementById('nilai1').value);
+            const n2 = Number(document.getElementById('nilai2').value);
+            
+            const output = `
+Penjumlahan: ${tambah(n1, n2)}
+Perkalian: ${kali(n1, n2)}
+            `;
+            document.getElementById('params-output').innerText = output;
+        }
+
+        // Default Parameters
+        function sapa(nama = 'Tamu') {
+            const output = `Selamat datang, ${nama}!`;
+            document.getElementById('default-output').innerText = output;
+            return output;
+        }
+
+        // Callback Function
+        function prosesData() {
+            const data = [1, 2, 3, 4, 5];
+            
+            // Callback dengan arrow function
+            const hasilFilter = data.filter(num => num > 2);
+            const hasilMap = data.map(num => num * 2);
+            
+            const output = `
+Data awal: ${data}
+Filter > 2: ${hasilFilter}
+Map (x2): ${hasilMap}
+            `;
+            document.getElementById('callback-output').innerText = output;
+        }
+    </script>
+</body>
+</html>

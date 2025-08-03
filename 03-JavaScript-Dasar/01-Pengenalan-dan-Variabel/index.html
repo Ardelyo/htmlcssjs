@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengenalan JavaScript dan Variabel</title>
+    <style>
+        .output {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f5f5f5;
+        }
+        .console {
+            font-family: monospace;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #2d2d2d;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pengenalan JavaScript dan Variabel</h1>
+
+    <!-- Cara Menambahkan JavaScript -->
+    <h2>1. Menambahkan JavaScript</h2>
+    <div class="output" id="demo-output-1">
+        <!-- Output akan muncul di sini -->
+    </div>
+
+    <!-- Variabel dan Nilai -->
+    <h2>2. Variabel dan Nilai</h2>
+    <div class="console" id="demo-output-2">
+        <!-- Output console akan muncul di sini -->
+    </div>
+
+    <!-- Let, Const, dan Var -->
+    <h2>3. Let, Const, dan Var</h2>
+    <div class="console" id="demo-output-3">
+        <!-- Output perbandingan akan muncul di sini -->
+    </div>
+
+    <!-- Scope Variabel -->
+    <h2>4. Scope Variabel</h2>
+    <div class="console" id="demo-output-4">
+        <!-- Output scope akan muncul di sini -->
+    </div>
+
+    <!-- JavaScript Internal -->
+    <script>
+        // 1. Menambahkan JavaScript
+        document.getElementById('demo-output-1').innerHTML = 
+            'Ini adalah teks yang ditambahkan dengan JavaScript!';
+
+        // 2. Variabel dan Nilai
+        let nama = "Budi";
+        let umur = 20;
+        let aktif = true;
+        
+        const output2 = `
+nama: ${nama} (${typeof nama})
+umur: ${umur} (${typeof umur})
+aktif: ${aktif} (${typeof aktif})
+        `;
+        document.getElementById('demo-output-2').innerText = output2;
+
+        // 3. Let, Const, dan Var
+        // Let - bisa diubah
+        let skorLet = 10;
+        skorLet = 20;
+
+        // Const - tidak bisa diubah
+        const PI = 3.14;
+        // PI = 3.15; // Ini akan error
+
+        // Var - hindari penggunaan
+        var skorVar = 30;
+        skorVar = 40;
+
+        const output3 = `
+let skor: ${skorLet}
+const PI: ${PI}
+var skor: ${skorVar}
+        `;
+        document.getElementById('demo-output-3').innerText = output3;
+
+        // 4. Scope Variabel
+        function demoScope() {
+            let lokalVar = "Lokal";
+            if (true) {
+                let blockVar = "Block";
+                var functionVar = "Function";
+                console.log(blockVar);    // Bisa diakses
+            }
+            // console.log(blockVar);     // Error - tidak bisa diakses
+            console.log(functionVar);     // Bisa diakses
+            return lokalVar;
+        }
+
+        const output4 = `
+Scope Demo:
+- let: hanya di block
+- const: hanya di block
+- var: di seluruh function
+
+Hasil fungsi: ${demoScope()}
+        `;
+        document.getElementById('demo-output-4').innerText = output4;
+    </script>
+
+    <!-- JavaScript External -->
+    <script src="script.js"></script>
+</body>
+</html>

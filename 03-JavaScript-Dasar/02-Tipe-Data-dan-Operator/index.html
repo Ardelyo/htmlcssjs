@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipe Data dan Operator JavaScript</title>
+    <style>
+        .demo-section {
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .console {
+            font-family: monospace;
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .output {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tipe Data dan Operator dalam JavaScript</h1>
+
+    <!-- Tipe Data Dasar -->
+    <div class="demo-section">
+        <h2>1. Tipe Data Dasar</h2>
+        <div class="console" id="tipe-data-output"></div>
+    </div>
+
+    <!-- Operator Aritmatika -->
+    <div class="demo-section">
+        <h2>2. Operator Aritmatika</h2>
+        <div class="console" id="aritmatika-output"></div>
+    </div>
+
+    <!-- Operator Perbandingan -->
+    <div class="demo-section">
+        <h2>3. Operator Perbandingan</h2>
+        <div class="console" id="perbandingan-output"></div>
+    </div>
+
+    <!-- Operator Logika -->
+    <div class="demo-section">
+        <h2>4. Operator Logika</h2>
+        <div class="console" id="logika-output"></div>
+    </div>
+
+    <!-- Type Coercion -->
+    <div class="demo-section">
+        <h2>5. Type Coercion</h2>
+        <div class="console" id="coercion-output"></div>
+    </div>
+
+    <!-- Operator Ternary -->
+    <div class="demo-section">
+        <h2>6. Operator Ternary</h2>
+        <div class="output" id="ternary-output"></div>
+    </div>
+
+    <script>
+        // Tipe Data Dasar
+        const number = 42;
+        const string = "Hello";
+        const boolean = true;
+        const array = [1, 2, 3];
+        const object = { nama: "Budi", umur: 25 };
+        const nullValue = null;
+        let undefinedValue;
+
+        document.getElementById('tipe-data-output').innerText = `
+Number: ${number} (${typeof number})
+String: ${string} (${typeof string})
+Boolean: ${boolean} (${typeof boolean})
+Array: ${array} (${typeof array})
+Object: ${JSON.stringify(object)} (${typeof object})
+Null: ${nullValue} (${typeof nullValue})
+Undefined: ${undefinedValue} (${typeof undefinedValue})
+        `;
+
+        // Operator Aritmatika
+        const a = 10;
+        const b = 3;
+
+        document.getElementById('aritmatika-output').innerText = `
+Penjumlahan: ${a} + ${b} = ${a + b}
+Pengurangan: ${a} - ${b} = ${a - b}
+Perkalian: ${a} * ${b} = ${a * b}
+Pembagian: ${a} / ${b} = ${a / b}
+Modulus: ${a} % ${b} = ${a % b}
+Eksponen: ${a} ** ${b} = ${a ** b}
+Increment: ${a}++ = ${a + 1}
+Decrement: ${b}-- = ${b - 1}
+        `;
+
+        // Operator Perbandingan
+        document.getElementById('perbandingan-output').innerText = `
+Sama dengan (==): 5 == "5" = ${5 == "5"}
+Identik (===): 5 === "5" = ${5 === "5"}
+Tidak sama (!=): 5 != "6" = ${5 != "6"}
+Tidak identik (!==): 5 !== "5" = ${5 !== "5"}
+Lebih besar (>): 5 > 3 = ${5 > 3}
+Lebih kecil (<): 5 < 3 = ${5 < 3}
+Lebih besar sama dengan (>=): 5 >= 5 = ${5 >= 5}
+Lebih kecil sama dengan (<=): 5 <= 6 = ${5 <= 6}
+        `;
+
+        // Operator Logika
+        const p = true;
+        const q = false;
+
+        document.getElementById('logika-output').innerText = `
+AND (&&): true && false = ${p && q}
+OR (||): true || false = ${p || q}
+NOT (!): !true = ${!p}
+        `;
+
+        // Type Coercion
+        document.getElementById('coercion-output').innerText = `
+Number + String: 5 + "10" = ${5 + "10"}
+Number - String: 5 - "3" = ${5 - "3"}
+Boolean + Number: true + 1 = ${true + 1}
+Number + Null: 5 + null = ${5 + null}
+Number + Undefined: 5 + undefined = ${5 + undefined}
+        `;
+
+        // Operator Ternary
+        const nilai = 75;
+        const hasil = nilai >= 70 ? "Lulus" : "Tidak Lulus";
+        
+        document.getElementById('ternary-output').innerText = `
+Nilai: ${nilai}
+Status: ${hasil}
+        `;
+    </script>
+</body>
+</html>

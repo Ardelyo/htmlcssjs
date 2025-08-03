@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <style>
+        .demo-section {
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 10px;
+            display: inline-block;
+        }
+        .red { background-color: #e74c3c; }
+        .green { background-color: #2ecc71; }
+    </style>
+</head>
+<body>
+    <h1>DOM Manipulation</h1>
+
+    <!-- Selecting Elements -->
+    <div class="demo-section">
+        <h2>1. Memilih Elemen</h2>
+        <p id="demo-text">Ini adalah teks demo.</p>
+        <p class="info-text">Teks dengan class info.</p>
+        <p class="info-text">Teks info lainnya.</p>
+        
+        <button onclick="selectElements()">Pilih Elemen</button>
+        <div id="selection-result" class="output"></div>
+    </div>
+
+    <!-- Modifying Content -->
+    <div class="demo-section">
+        <h2>2. Mengubah Konten</h2>
+        <p id="content-demo">Konten awal</p>
+        
+        <button onclick="changeText()">Ubah Text</button>
+        <button onclick="changeHTML()">Ubah HTML</button>
+    </div>
+
+    <!-- Modifying Attributes -->
+    <div class="demo-section">
+        <h2>3. Mengubah Atribut</h2>
+        <img id="demo-image" src="https://via.placeholder.com/150" alt="Gambar Demo" width="150">
+        <br>
+        <button onclick="changeAttribute()">Ubah Atribut</button>
+    </div>
+
+    <!-- Modifying Styles -->
+    <div class="demo-section">
+        <h2>4. Mengubah Style</h2>
+        <div id="style-demo" class="box"></div>
+        
+        <button onclick="changeStyle()">Ubah Style</button>
+        <button onclick="toggleClass()">Toggle Class</button>
+    </div>
+
+    <!-- Creating and Removing Elements -->
+    <div class="demo-section">
+        <h2>5. Membuat & Menghapus Elemen</h2>
+        <div id="element-container"></div>
+        
+        <button onclick="createElement()">Buat Elemen</button>
+        <button onclick="removeElement()">Hapus Elemen</button>
+    </div>
+
+    <!-- Event Handling -->
+    <div class="demo-section">
+        <h2>6. Navigasi DOM</h2>
+        <div id="parent">
+            Parent
+            <div id="child1" class="box red">Child 1</div>
+            <div id="child2" class="box green">Child 2</div>
+        </div>
+        
+        <button onclick="navigateDOM()">Tampilkan Struktur</button>
+        <div id="navigation-result" class="output"></div>
+    </div>
+
+    <script>
+        function selectElements() {
+            // By ID
+            const demoText = document.getElementById('demo-text');
+            
+            // By Class
+            const infoTexts = document.getElementsByClassName('info-text');
+            
+            // By Tag
+            const paragraphs = document.getElementsByTagName('p');
+            
+            // Query Selector
+            const firstInfo = document.querySelector('.info-text');
+            
+            let result = `
+                getElementById: ${demoText.textContent}
+                getElementsByClassName: ${infoTexts.length} elemen
+                getElementsByTagName: ${paragraphs.length} elemen
+                querySelector: ${firstInfo.textContent}
+            `;
+            
+            document.getElementById('selection-result').textContent = result;
+        }
+
+        function changeText() {
+            const element = document.getElementById('content-demo');
+            element.textContent = 'Teks telah diubah!';
+        }
+
+        function changeHTML() {
+            const element = document.getElementById('content-demo');
+            element.innerHTML = 'Teks dengan <strong>HTML</strong>!';
+        }
+
+        function changeAttribute() {
+            const img = document.getElementById('demo-image');
+            if (img.src.includes('150')) {
+                img.src = 'https://via.placeholder.com/200';
+                img.width = 200;
+            } else {
+                img.src = 'https://via.placeholder.com/150';
+                img.width = 150;
+            }
+        }
+
+        function changeStyle() {
+            const element = document.getElementById('style-demo');
+            if (element.style.backgroundColor === 'red') {
+                element.style.backgroundColor = '#3498db';
+                element.style.transform = '';
+            } else {
+                element.style.backgroundColor = 'red';
+                element.style.transform = 'rotate(45deg)';
+            }
+        }
+
+        function toggleClass() {
+            const element = document.getElementById('style-demo');
+            element.classList.toggle('highlight');
+        }
+
+        function createElement() {
+            const container = document.getElementById('element-container');
+            const newElement = document.createElement('div');
+            newElement.className = 'box';
+            newElement.id = 'new-element';
+            container.appendChild(newElement);
+        }
+
+        function removeElement() {
+            const element = document.getElementById('new-element');
+            if (element) {
+                element.parentNode.removeChild(element);
+            }
+        }
+
+        function navigateDOM() {
+            const parent = document.getElementById('parent');
+            const children = parent.children;
+            const firstChild = parent.firstElementChild;
+            const lastChild = parent.lastElementChild;
+            
+            let result = `
+                Jumlah child: ${children.length}
+                First child class: ${firstChild.className}
+                Last child class: ${lastChild.className}
+                Parent dari child1: ${document.getElementById('child1').parentElement.id}
+            `;
+            
+            document.getElementById('navigation-result').textContent = result;
+        }
+    </script>
+</body>
+</html>
