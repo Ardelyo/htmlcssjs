@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model CSS</title>
+    <style>
+        /* Reset default margins */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        /* Basic Box Model Demo */
+        .box-model-demo {
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+            border: 5px solid #333;
+            margin: 30px;
+            background-color: #f0f0f0;
+        }
+
+        /* Content Box vs Border Box */
+        .content-box {
+            box-sizing: content-box;
+            width: 200px;
+            padding: 20px;
+            border: 5px solid #4CAF50;
+            margin: 20px;
+            background-color: #E8F5E9;
+        }
+
+        .border-box {
+            box-sizing: border-box;
+            width: 200px;
+            padding: 20px;
+            border: 5px solid #2196F3;
+            margin: 20px;
+            background-color: #E3F2FD;
+        }
+
+        /* Margin Collapse Demo */
+        .margin-collapse {
+            background-color: #FFECB3;
+            margin: 20px 0;
+            padding: 10px;
+        }
+
+        /* Border Styles Demo */
+        .border-demo {
+            margin: 20px;
+            padding: 10px;
+            background-color: white;
+        }
+
+        .border-solid {
+            border: 3px solid #000;
+        }
+
+        .border-dashed {
+            border: 3px dashed #000;
+        }
+
+        .border-dotted {
+            border: 3px dotted #000;
+        }
+
+        .border-double {
+            border: 3px double #000;
+        }
+
+        .border-radius {
+            border: 3px solid #000;
+            border-radius: 10px;
+        }
+
+        /* Individual Border Sides */
+        .border-sides {
+            border-top: 3px solid red;
+            border-right: 3px dashed blue;
+            border-bottom: 3px dotted green;
+            border-left: 3px double orange;
+            padding: 10px;
+            margin: 20px;
+            background-color: #FFF3E0;
+        }
+
+        /* Padding Demo */
+        .padding-demo {
+            background-color: #E1BEE7;
+            margin: 20px;
+        }
+
+        .padding-uniform {
+            padding: 20px;
+        }
+
+        .padding-varied {
+            padding-top: 10px;
+            padding-right: 20px;
+            padding-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        /* Margin Demo */
+        .margin-demo {
+            background-color: #BBDEFB;
+            padding: 10px;
+        }
+
+        .margin-auto {
+            width: 200px;
+            margin: 0 auto;
+        }
+
+        /* Negative Margin Demo */
+        .negative-margin {
+            margin-top: -20px;
+            background-color: #FFCDD2;
+            padding: 10px;
+        }
+
+        /* Helper Classes */
+        .demo-section {
+            margin: 40px 0;
+        }
+
+        .demo-title {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .box-highlight {
+            border: 1px dashed #999;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Box Model dalam CSS</h1>
+
+    <!-- Basic Box Model Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">Box Model Dasar</h2>
+        <div class="box-model-demo">
+            Ini adalah contoh box model dengan content, padding, border, dan margin.
+        </div>
+    </div>
+
+    <!-- Content Box vs Border Box -->
+    <div class="demo-section">
+        <h2 class="demo-title">Content Box vs Border Box</h2>
+        <div class="content-box">
+            Content Box: Total lebar = width + padding + border
+        </div>
+        <div class="border-box">
+            Border Box: Total lebar = width (termasuk padding dan border)
+        </div>
+    </div>
+
+    <!-- Margin Collapse -->
+    <div class="demo-section">
+        <h2 class="demo-title">Margin Collapse</h2>
+        <div class="margin-collapse">Box 1 dengan margin 20px</div>
+        <div class="margin-collapse">Box 2 dengan margin 20px</div>
+    </div>
+
+    <!-- Border Styles -->
+    <div class="demo-section">
+        <h2 class="demo-title">Style Border</h2>
+        <div class="border-demo border-solid">Solid Border</div>
+        <div class="border-demo border-dashed">Dashed Border</div>
+        <div class="border-demo border-dotted">Dotted Border</div>
+        <div class="border-demo border-double">Double Border</div>
+        <div class="border-demo border-radius">Border dengan Radius</div>
+    </div>
+
+    <!-- Individual Borders -->
+    <div class="demo-section">
+        <h2 class="demo-title">Border per Sisi</h2>
+        <div class="border-sides">
+            Border berbeda di setiap sisi
+        </div>
+    </div>
+
+    <!-- Padding Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">Padding</h2>
+        <div class="padding-demo padding-uniform">
+            Padding seragam di semua sisi
+        </div>
+        <div class="padding-demo padding-varied">
+            Padding berbeda di setiap sisi
+        </div>
+    </div>
+
+    <!-- Margin Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">Margin</h2>
+        <div class="margin-demo margin-auto">
+            Box dengan margin auto (centered)
+        </div>
+    </div>
+
+    <!-- Negative Margin -->
+    <div class="demo-section">
+        <h2 class="demo-title">Margin Negatif</h2>
+        <div class="box-highlight">Box normal</div>
+        <div class="negative-margin">Box dengan margin negatif</div>
+    </div>
+</body>
+</html>

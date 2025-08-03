@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link dan Gambar</title>
+</head>
+<body>
+    <h1>Belajar Link dan Gambar</h1>
+
+    <!-- Link Dasar -->
+    <h2>Contoh Link</h2>
+    <p>
+        <!-- Link ke website eksternal -->
+        Kunjungi <a href="https://www.google.com">Google</a> untuk mencari informasi.
+        
+        <!-- Link yang membuka tab baru -->
+        Atau kunjungi <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> (membuka di tab baru).
+    </p>
+
+    <!-- Link ke Bagian Halaman -->
+    <p>
+        <!-- Link internal ke id tertentu dalam halaman -->
+        <a href="#gambar-contoh">Loncat ke bagian gambar</a>
+    </p>
+
+    <!-- Link ke Email -->
+    <p>
+        <!-- Link untuk mengirim email -->
+        <a href="mailto:contoh@email.com">Kirim email kepada kami</a>
+    </p>
+
+    <!-- Gambar Dasar -->
+    <h2 id="gambar-contoh">Contoh Gambar</h2>
+    
+    <!-- Gambar dengan alt text (penting untuk aksesibilitas) -->
+    <img src="https://via.placeholder.com/300x200" 
+         alt="Gambar placeholder 300x200 piksel" 
+         width="300" 
+         height="200">
+
+    <!-- Gambar dengan Link -->
+    <p>
+        <a href="https://www.google.com">
+            <img src="https://via.placeholder.com/150x100" 
+                 alt="Gambar yang bisa diklik" 
+                 width="150" 
+                 height="100">
+        </a>
+        <br>
+        Klik gambar di atas untuk pergi ke Google
+    </p>
+
+    <!-- Gambar dengan Caption -->
+    <figure>
+        <img src="https://via.placeholder.com/400x300" 
+             alt="Gambar placeholder dengan caption" 
+             width="400" 
+             height="300">
+        <figcaption>Ini adalah caption untuk gambar di atas</figcaption>
+    </figure>
+
+</body>
+</html>

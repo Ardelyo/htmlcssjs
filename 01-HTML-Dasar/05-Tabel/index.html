@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabel dalam HTML</title>
+</head>
+<body>
+    <h1>Belajar Membuat Tabel</h1>
+
+    <!-- Tabel Sederhana -->
+    <h2>Daftar Siswa</h2>
+    <table border="1">
+        <!-- Header Tabel -->
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Usia</th>
+                <th>Kota</th>
+            </tr>
+        </thead>
+        <!-- Isi Tabel -->
+        <tbody>
+            <tr>
+                <td>Budi</td>
+                <td>20</td>
+                <td>Jakarta</td>
+            </tr>
+            <tr>
+                <td>Ani</td>
+                <td>19</td>
+                <td>Bandung</td>
+            </tr>
+            <tr>
+                <td>Citra</td>
+                <td>21</td>
+                <td>Surabaya</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Tabel dengan Colspan dan Rowspan -->
+    <h2>Jadwal Pelajaran</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Waktu</th>
+                <th>Senin</th>
+                <th>Selasa</th>
+                <th>Rabu</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>08:00 - 09:00</td>
+                <td colspan="2">Matematika</td>
+                <td>Bahasa</td>
+            </tr>
+            <tr>
+                <td>09:00 - 10:00</td>
+                <td>Fisika</td>
+                <td rowspan="2">Olahraga</td>
+                <td>Sejarah</td>
+            </tr>
+            <tr>
+                <td>10:00 - 11:00</td>
+                <td>Kimia</td>
+                <td>Biologi</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Tabel dengan Caption dan Footer -->
+    <h2>Data Penjualan</h2>
+    <table border="1">
+        <caption>Penjualan Produk Tahun 2025</caption>
+        <thead>
+            <tr>
+                <th>Produk</th>
+                <th>Kuartal 1</th>
+                <th>Kuartal 2</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Laptop</td>
+                <td>150</td>
+                <td>200</td>
+                <td>350</td>
+            </tr>
+            <tr>
+                <td>Smartphone</td>
+                <td>300</td>
+                <td>400</td>
+                <td>700</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total</th>
+                <td>450</td>
+                <td>600</td>
+                <td>1050</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+</html>

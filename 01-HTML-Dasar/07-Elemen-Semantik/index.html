@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elemen Semantik HTML</title>
+</head>
+<body>
+    <!-- Header website -->
+    <header>
+        <h1>Blog Pribadi</h1>
+        <!-- Navigasi utama -->
+        <nav>
+            <ul>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#artikel">Artikel</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Konten utama -->
+    <main>
+        <!-- Artikel utama -->
+        <article>
+            <header>
+                <h2>Pentingnya Elemen Semantik dalam HTML</h2>
+                <p>Ditulis oleh: Budi | Tanggal: 3 Agustus 2025</p>
+            </header>
+
+            <!-- Bagian artikel -->
+            <section>
+                <h3>Apa itu Elemen Semantik?</h3>
+                <p>Elemen semantik adalah elemen HTML yang memberikan makna pada strukturnya...</p>
+            </section>
+
+            <section>
+                <h3>Keuntungan Menggunakan Elemen Semantik</h3>
+                <!-- Daftar keuntungan -->
+                <ul>
+                    <li>SEO yang lebih baik</li>
+                    <li>Aksesibilitas yang lebih baik</li>
+                    <li>Kode yang lebih mudah dibaca</li>
+                </ul>
+            </section>
+
+            <!-- Artikel terkait -->
+            <aside>
+                <h4>Artikel Terkait</h4>
+                <ul>
+                    <li><a href="#">Panduan HTML Dasar</a></li>
+                    <li><a href="#">Tips Optimasi SEO</a></li>
+                </ul>
+            </aside>
+        </article>
+
+        <!-- Bagian komentar -->
+        <section id="komentar">
+            <h3>Komentar</h3>
+            <!-- Contoh komentar -->
+            <article class="komentar">
+                <header>
+                    <h4>Ani</h4>
+                    <time datetime="2025-08-03 10:00">10:00, 3 Agustus 2025</time>
+                </header>
+                <p>Artikel yang sangat informatif!</p>
+            </article>
+        </section>
+    </main>
+
+    <!-- Sidebar -->
+    <aside>
+        <section>
+            <h3>Tentang Penulis</h3>
+            <figure>
+                <img src="https://via.placeholder.com/150" alt="Foto Penulis">
+                <figcaption>Budi - Web Developer</figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <h3>Kategori</h3>
+            <nav>
+                <ul>
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                </ul>
+            </nav>
+        </section>
+    </aside>
+
+    <!-- Footer website -->
+    <footer>
+        <p>&copy; 2025 Blog Pribadi. Hak cipta dilindungi.</p>
+        <address>
+            Email: <a href="mailto:kontak@blog.com">kontak@blog.com</a><br>
+            Alamat: Jalan Web Development No. 123
+        </address>
+    </footer>
+</body>
+</html>

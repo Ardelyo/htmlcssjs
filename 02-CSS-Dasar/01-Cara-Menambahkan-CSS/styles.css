@@ -1,0 +1,29 @@
+/* CSS External untuk demo */
+
+/* Style untuk elemen dengan class "external-style" */
+.external-style {
+    color: green;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Style untuk demonstrasi prioritas */
+.priority-demo {
+    color: orange;  /* Akan ditimpa oleh style inline */
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Style tambahan untuk demo */
+.style-demo {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-left: 5px solid #ddd;
+}
+
+.style-demo h2 {
+    color: #333;
+    margin-bottom: 10px;
+}

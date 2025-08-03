@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir dalam HTML</title>
+</head>
+<body>
+    <h1>Belajar Membuat Formulir</h1>
+
+    <!-- Formulir Login Sederhana -->
+    <h2>Form Login</h2>
+    <form action="#" method="POST">
+        <!-- Input teks biasa -->
+        <div>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" placeholder="Masukkan username">
+        </div>
+        
+        <!-- Input password -->
+        <div>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" placeholder="Masukkan password">
+        </div>
+        
+        <!-- Checkbox -->
+        <div>
+            <input type="checkbox" id="ingat" name="ingat">
+            <label for="ingat">Ingat saya</label>
+        </div>
+        
+        <!-- Tombol submit -->
+        <div>
+            <button type="submit">Masuk</button>
+        </div>
+    </form>
+
+    <!-- Formulir Pendaftaran -->
+    <h2>Form Pendaftaran</h2>
+    <form action="#" method="POST">
+        <!-- Grup data pribadi -->
+        <fieldset>
+            <legend>Data Pribadi</legend>
+            
+            <!-- Input teks dengan required -->
+            <div>
+                <label for="nama">Nama Lengkap:</label><br>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+            
+            <!-- Input email -->
+            <div>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <!-- Input tanggal -->
+            <div>
+                <label for="tanggal-lahir">Tanggal Lahir:</label><br>
+                <input type="date" id="tanggal-lahir" name="tanggal-lahir">
+            </div>
+            
+            <!-- Radio buttons -->
+            <div>
+                <p>Jenis Kelamin:</p>
+                <input type="radio" id="pria" name="gender" value="pria">
+                <label for="pria">Pria</label><br>
+                <input type="radio" id="wanita" name="gender" value="wanita">
+                <label for="wanita">Wanita</label>
+            </div>
+        </fieldset>
+
+        <!-- Grup preferensi -->
+        <fieldset>
+            <legend>Preferensi</legend>
+            
+            <!-- Select dropdown -->
+            <div>
+                <label for="hobi">Hobi:</label><br>
+                <select id="hobi" name="hobi">
+                    <option value="">Pilih Hobi</option>
+                    <option value="membaca">Membaca</option>
+                    <option value="olahraga">Olahraga</option>
+                    <option value="musik">Musik</option>
+                    <option value="lainnya">Lainnya</option>
+                </select>
+            </div>
+            
+            <!-- Textarea -->
+            <div>
+                <label for="bio">Tentang Saya:</label><br>
+                <textarea id="bio" name="bio" rows="4" cols="50" 
+                          placeholder="Ceritakan tentang diri Anda..."></textarea>
+            </div>
+        </fieldset>
+
+        <!-- Tombol reset dan submit -->
+        <div>
+            <button type="reset">Reset</button>
+            <button type="submit">Daftar</button>
+        </div>
+    </form>
+
+</body>
+</html>

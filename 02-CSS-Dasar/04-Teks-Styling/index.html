@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Styling dengan CSS</title>
+    <style>
+        /* Font Family Demo */
+        .font-serif {
+            font-family: Georgia, Times, "Times New Roman", serif;
+        }
+
+        .font-sans-serif {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .font-monospace {
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        /* Font Size Demo */
+        .size-px {
+            font-size: 16px;
+        }
+
+        .size-em {
+            font-size: 1.2em;
+        }
+
+        .size-rem {
+            font-size: 1.2rem;
+        }
+
+        /* Font Weight & Style */
+        .text-bold {
+            font-weight: bold;
+        }
+
+        .text-light {
+            font-weight: 300;
+        }
+
+        .text-italic {
+            font-style: italic;
+        }
+
+        /* Text Alignment */
+        .text-left {
+            text-align: left;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+
+        /* Line Height */
+        .line-height-normal {
+            line-height: 1.5;
+        }
+
+        .line-height-large {
+            line-height: 2;
+        }
+
+        /* Text Decoration */
+        .text-underline {
+            text-decoration: underline;
+        }
+
+        .text-overline {
+            text-decoration: overline;
+        }
+
+        .text-line-through {
+            text-decoration: line-through;
+        }
+
+        /* Text Transform */
+        .text-uppercase {
+            text-transform: uppercase;
+        }
+
+        .text-lowercase {
+            text-transform: lowercase;
+        }
+
+        .text-capitalize {
+            text-transform: capitalize;
+        }
+
+        /* Letter & Word Spacing */
+        .letter-spacing {
+            letter-spacing: 2px;
+        }
+
+        .word-spacing {
+            word-spacing: 5px;
+        }
+
+        /* Text Shadow */
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Demo Section */
+        .demo-section {
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .demo-title {
+            color: #333;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Styling Teks dengan CSS</h1>
+
+    <!-- Font Family Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">Font Family</h2>
+        <p class="font-serif">Ini adalah teks dengan font Serif</p>
+        <p class="font-sans-serif">Ini adalah teks dengan font Sans-serif</p>
+        <p class="font-monospace">Ini adalah teks dengan font Monospace</p>
+    </div>
+
+    <!-- Font Size Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">Ukuran Font</h2>
+        <p class="size-px">Ukuran font dalam pixels (16px)</p>
+        <p class="size-em">Ukuran font dalam em (1.2em)</p>
+        <p class="size-rem">Ukuran font dalam rem (1.2rem)</p>
+    </div>
+
+    <!-- Font Weight & Style -->
+    <div class="demo-section">
+        <h2 class="demo-title">Ketebalan dan Style Font</h2>
+        <p class="text-bold">Teks tebal (bold)</p>
+        <p class="text-light">Teks tipis (light)</p>
+        <p class="text-italic">Teks miring (italic)</p>
+    </div>
+
+    <!-- Text Alignment -->
+    <div class="demo-section">
+        <h2 class="demo-title">Perataan Teks</h2>
+        <p class="text-left">Teks rata kiri</p>
+        <p class="text-center">Teks rata tengah</p>
+        <p class="text-right">Teks rata kanan</p>
+        <p class="text-justify">Teks rata kiri-kanan (justify). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+
+    <!-- Line Height -->
+    <div class="demo-section">
+        <h2 class="demo-title">Jarak Antar Baris</h2>
+        <p class="line-height-normal">
+            Ini adalah teks dengan line-height normal (1.5).
+            Perhatikan jarak antar barisnya.
+            Mudah dibaca dan nyaman dilihat.
+        </p>
+        <p class="line-height-large">
+            Ini adalah teks dengan line-height besar (2).
+            Perhatikan jarak antar barisnya.
+            Lebih longgar dari yang normal.
+        </p>
+    </div>
+
+    <!-- Text Decoration -->
+    <div class="demo-section">
+        <h2 class="demo-title">Dekorasi Teks</h2>
+        <p class="text-underline">Teks dengan garis bawah</p>
+        <p class="text-overline">Teks dengan garis atas</p>
+        <p class="text-line-through">Teks dengan garis tengah</p>
+    </div>
+
+    <!-- Text Transform -->
+    <div class="demo-section">
+        <h2 class="demo-title">Transformasi Teks</h2>
+        <p class="text-uppercase">teks menjadi huruf besar semua</p>
+        <p class="text-lowercase">TEKS MENJADI HURUF KECIL SEMUA</p>
+        <p class="text-capitalize">teks dengan huruf kapital di awal kata</p>
+    </div>
+
+    <!-- Letter & Word Spacing -->
+    <div class="demo-section">
+        <h2 class="demo-title">Jarak Antar Huruf & Kata</h2>
+        <p class="letter-spacing">Teks dengan jarak antar huruf</p>
+        <p class="word-spacing">Teks dengan jarak antar kata</p>
+    </div>
+
+    <!-- Text Shadow -->
+    <div class="demo-section">
+        <h2 class="demo-title">Bayangan Teks</h2>
+        <p class="text-shadow">Teks dengan efek bayangan</p>
+    </div>
+</body>
+</html>

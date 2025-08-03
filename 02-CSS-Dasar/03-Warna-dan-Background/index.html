@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warna dan Background CSS</title>
+    <style>
+        /* Container untuk demo warna */
+        .color-demo {
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        /* Demo format warna berbeda */
+        .color-named {
+            background-color: skyblue;
+            color: navy;
+        }
+
+        .color-hex {
+            background-color: #FFE4E1;
+            color: #8B4513;
+        }
+
+        .color-rgb {
+            background-color: rgb(144, 238, 144);
+            color: rgb(0, 100, 0);
+        }
+
+        .color-rgba {
+            background-color: rgba(255, 99, 71, 0.5);
+            color: rgba(139, 0, 0, 1);
+        }
+
+        .color-hsl {
+            background-color: hsl(120, 60%, 70%);
+            color: hsl(120, 100%, 25%);
+        }
+
+        /* Demo background-image */
+        .bg-image {
+            height: 200px;
+            background-image: url('https://via.placeholder.com/500');
+            background-size: cover;
+            background-position: center;
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        /* Demo background-repeat */
+        .bg-repeat {
+            height: 150px;
+            background-image: url('https://via.placeholder.com/50');
+            margin: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .bg-repeat-x {
+            background-repeat: repeat-x;
+        }
+
+        .bg-repeat-y {
+            background-repeat: repeat-y;
+        }
+
+        .bg-no-repeat {
+            background-repeat: no-repeat;
+        }
+
+        /* Demo background-gradient */
+        .bg-gradient-linear {
+            height: 100px;
+            background: linear-gradient(to right, #ff6b6b, #4ecdc4);
+            margin: 20px;
+        }
+
+        .bg-gradient-radial {
+            height: 100px;
+            background: radial-gradient(circle, #ff6b6b, #4ecdc4);
+            margin: 20px;
+        }
+
+        /* Demo multiple backgrounds */
+        .bg-multiple {
+            height: 200px;
+            background: 
+                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('https://via.placeholder.com/500');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Warna dan Background dalam CSS</h1>
+
+    <!-- Demo Format Warna -->
+    <h2>Format Warna</h2>
+    <div class="color-demo color-named">
+        Warna dengan Nama (named colors)
+    </div>
+
+    <div class="color-demo color-hex">
+        Warna dengan Kode Hex (#FFE4E1)
+    </div>
+
+    <div class="color-demo color-rgb">
+        Warna dengan RGB
+    </div>
+
+    <div class="color-demo color-rgba">
+        Warna dengan RGBA (dengan transparansi)
+    </div>
+
+    <div class="color-demo color-hsl">
+        Warna dengan HSL
+    </div>
+
+    <!-- Demo Background Image -->
+    <h2>Background Image</h2>
+    <div class="bg-image"></div>
+
+    <!-- Demo Background Repeat -->
+    <h2>Background Repeat</h2>
+    <div class="bg-repeat bg-repeat-x">
+        Background repeat-x
+    </div>
+
+    <div class="bg-repeat bg-repeat-y">
+        Background repeat-y
+    </div>
+
+    <div class="bg-repeat bg-no-repeat">
+        Background no-repeat
+    </div>
+
+    <!-- Demo Gradient -->
+    <h2>Background Gradient</h2>
+    <div class="bg-gradient-linear">
+        Linear Gradient
+    </div>
+
+    <div class="bg-gradient-radial">
+        Radial Gradient
+    </div>
+
+    <!-- Demo Multiple Backgrounds -->
+    <h2>Multiple Backgrounds</h2>
+    <div class="bg-multiple">
+        <h3>Teks dengan Background Overlay</h3>
+    </div>
+</body>
+</html>

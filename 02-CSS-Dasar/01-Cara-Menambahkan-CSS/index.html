@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cara Menambahkan CSS</title>
+
+    <!-- CSS Internal -->
+    <style>
+        /* CSS untuk elemen dengan id "internal-style" */
+        #internal-style {
+            color: blue;
+            font-size: 20px;
+        }
+
+        /* CSS untuk semua paragraf dalam div dengan class "style-demo" */
+        .style-demo p {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    <!-- CSS External -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Tiga Cara Menambahkan CSS</h1>
+
+    <!-- 1. CSS Inline -->
+    <div class="style-demo">
+        <h2>1. CSS Inline</h2>
+        <p style="color: red; font-weight: bold;">
+            Ini adalah contoh CSS inline menggunakan atribut style.
+            CSS inline memiliki prioritas tertinggi.
+        </p>
+    </div>
+
+    <!-- 2. CSS Internal -->
+    <div class="style-demo">
+        <h2>2. CSS Internal</h2>
+        <p id="internal-style">
+            Ini adalah contoh CSS internal menggunakan tag style di bagian head.
+            CSS internal baik untuk halaman yang memiliki style unik.
+        </p>
+    </div>
+
+    <!-- 3. CSS External -->
+    <div class="style-demo">
+        <h2>3. CSS External</h2>
+        <p class="external-style">
+            Ini adalah contoh CSS external yang diimpor dari file styles.css.
+            CSS external adalah cara terbaik untuk maintenance website besar.
+        </p>
+    </div>
+
+    <!-- Contoh Prioritas CSS -->
+    <div class="style-demo">
+        <h2>Prioritas CSS</h2>
+        <p class="priority-demo" style="color: purple;">
+            Teks ini memiliki beberapa style yang bertabrakan.
+            CSS inline akan menang karena memiliki prioritas tertinggi.
+        </p>
+    </div>
+</body>
+</html>

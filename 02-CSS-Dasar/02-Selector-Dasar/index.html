@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector CSS</title>
+    <style>
+        /* Selector Tag/Elemen */
+        p {
+            line-height: 1.6;
+        }
+
+        /* Selector Class */
+        .highlight {
+            background-color: yellow;
+        }
+
+        /* Selector ID */
+        #header-utama {
+            text-align: center;
+            color: navy;
+        }
+
+        /* Selector Universal */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Selector Kombinasi */
+        .container p {
+            margin-bottom: 10px;
+        }
+
+        /* Selector Child */
+        .nav > li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        /* Selector Adjacent Sibling */
+        h2 + p {
+            font-weight: bold;
+        }
+
+        /* Selector Attribute */
+        input[type="text"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Selector Pseudo-class */
+        a:hover {
+            color: red;
+        }
+
+        li:first-child {
+            font-weight: bold;
+        }
+
+        /* Selector Pseudo-element */
+        p::first-letter {
+            font-size: 150%;
+            font-weight: bold;
+        }
+
+        /* Multiple Selectors */
+        h1, h2, h3 {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="header-utama">Belajar Selector CSS</h1>
+
+    <div class="container">
+        <h2>Jenis-jenis Selector</h2>
+        <p>Ini adalah paragraf dengan selector <span class="highlight">tag dan class</span>.</p>
+        
+        <nav>
+            <ul class="nav">
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Tentang</a></li>
+                <li><a href="#">Kontak</a></li>
+            </ul>
+        </nav>
+
+        <h3>Form Demo</h3>
+        <form>
+            <input type="text" placeholder="Masukkan teks...">
+            <input type="email" placeholder="Email...">
+        </form>
+
+        <div class="pseudo-demo">
+            <p>Paragraf ini memiliki huruf pertama yang besar.</p>
+            <p>Paragraf kedua juga memiliki huruf pertama yang besar.</p>
+        </div>
+    </div>
+</body>
+</html>

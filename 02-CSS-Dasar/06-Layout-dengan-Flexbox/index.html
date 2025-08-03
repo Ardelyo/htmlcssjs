@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout dengan Flexbox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* Demo Containers */
+        .demo-container {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        .flex-container {
+            display: flex;
+            margin: 10px 0;
+            background-color: #e3f2fd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Flex Items */
+        .flex-item {
+            padding: 20px;
+            margin: 5px;
+            background-color: #bbdefb;
+            border: 1px solid #2196f3;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Flex Direction */
+        .flex-row {
+            flex-direction: row;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .flex-row-reverse {
+            flex-direction: row-reverse;
+        }
+
+        .flex-column-reverse {
+            flex-direction: column-reverse;
+        }
+
+        /* Justify Content */
+        .justify-start {
+            justify-content: flex-start;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-end {
+            justify-content: flex-end;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .justify-around {
+            justify-content: space-around;
+        }
+
+        /* Align Items */
+        .align-container {
+            height: 200px;
+            background-color: #e3f2fd;
+        }
+
+        .align-start {
+            align-items: flex-start;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .align-end {
+            align-items: flex-end;
+        }
+
+        .align-stretch {
+            align-items: stretch;
+        }
+
+        /* Flex Wrap */
+        .flex-nowrap {
+            flex-wrap: nowrap;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .flex-wrap-reverse {
+            flex-wrap: wrap-reverse;
+        }
+
+        /* Flex Grow & Shrink */
+        .flex-grow-1 {
+            flex-grow: 1;
+        }
+
+        .flex-grow-2 {
+            flex-grow: 2;
+        }
+
+        .flex-shrink-1 {
+            flex-shrink: 1;
+            width: 200px;
+        }
+
+        .flex-shrink-0 {
+            flex-shrink: 0;
+            width: 200px;
+        }
+
+        /* Order */
+        .order-1 { order: 1; }
+        .order-2 { order: 2; }
+        .order-3 { order: 3; }
+
+        /* Responsive Navigation Example */
+        .nav {
+            display: flex;
+            background-color: #2196f3;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        .nav-item {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .nav-item:hover {
+            background-color: #1976d2;
+            border-radius: 4px;
+        }
+
+        /* Card Layout Example */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            flex: 1 1 300px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Layout dengan Flexbox</h1>
+
+    <!-- Flex Direction -->
+    <div class="demo-container">
+        <h2>Flex Direction</h2>
+        <div class="flex-container flex-row">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+        </div>
+
+        <div class="flex-container flex-column">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+        </div>
+    </div>
+
+    <!-- Justify Content -->
+    <div class="demo-container">
+        <h2>Justify Content</h2>
+        <div class="flex-container justify-center">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+        </div>
+
+        <div class="flex-container justify-between">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+        </div>
+    </div>
+
+    <!-- Align Items -->
+    <div class="demo-container">
+        <h2>Align Items</h2>
+        <div class="flex-container align-container align-center">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+        </div>
+    </div>
+
+    <!-- Flex Wrap -->
+    <div class="demo-container">
+        <h2>Flex Wrap</h2>
+        <div class="flex-container flex-wrap">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">4</div>
+            <div class="flex-item">5</div>
+        </div>
+    </div>
+
+    <!-- Flex Grow -->
+    <div class="demo-container">
+        <h2>Flex Grow</h2>
+        <div class="flex-container">
+            <div class="flex-item flex-grow-1">Grow 1</div>
+            <div class="flex-item flex-grow-2">Grow 2</div>
+            <div class="flex-item flex-grow-1">Grow 1</div>
+        </div>
+    </div>
+
+    <!-- Navigation Example -->
+    <div class="demo-container">
+        <h2>Navigation Menu</h2>
+        <nav class="nav">
+            <a href="#" class="nav-item">Beranda</a>
+            <a href="#" class="nav-item">Produk</a>
+            <a href="#" class="nav-item">Tentang</a>
+            <a href="#" class="nav-item">Kontak</a>
+        </nav>
+    </div>
+
+    <!-- Card Layout Example -->
+    <div class="demo-container">
+        <h2>Card Layout</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Card 1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="card">
+                <h3>Card 2</h3>
+                <p>Consectetur adipisicing elit, sed do eiusmod tempor.</p>
+            </div>
+            <div class="card">
+                <h3>Card 3</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
